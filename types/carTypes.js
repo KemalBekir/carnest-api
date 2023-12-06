@@ -1,82 +1,3 @@
-export type CarMake = {
-  Toyota: string[];
-  Ford: string[];
-  BMW: string[];
-  Peugeot: string[];
-  Abarth: string[];
-  Fiat: string[];
-  MercedesBenz: string[];
-  Audi: string[];
-  Vauxhall: string[];
-  Seat: string[];
-  Volkswagen: string[];
-  Mitsubishi: string[];
-  Tesla: string[];
-  Chevrolet: string[];
-  Hyundai: string[];
-  Kia: string[];
-  Renault: string[];
-  Nissan: string[];
-  Volvo: string[];
-  Skoda: string[];
-  Honda: string[];
-  Citroen: string[];
-  Mazda: string[];
-  Mini: string[];
-  Jaguar: string[];
-  LandRover: string[];
-  Lexus: string[];
-  Jeep: string[];
-  Subaru: string[];
-  Porsche: string[];
-  DS: string[];
-  Smart: string[];
-  AlfaRomeo: string[];
-  MG: string[];
-  Suzuki: string[];
-  Dacia: string[];
-  Infiniti: string[];
-  Bentley: string[];
-  Ferrari: string[];
-  Lamborghini: string[];
-  McLaren: string[];
-  Bugatti: string[];
-  AstonMartin: string[];
-  RollsRoyce: string[];
-  Lotus: string[];
-  Maserati: string[];
-  Pagani: string[];
-  Koenigsegg: string[];
-  Genesis: string[];
-  Rimac: string[];
-  Chrysler: string[];
-  Hummer: string[];
-  Cadillac: string[];
-  Buick: string[];
-  Lincoln: string[];
-  Pontiac: string[];
-  Oldsmobile: string[];
-  Saturn: string[];
-  Saab: string[];
-  Plymouth: string[];
-  Mercury: string[];
-  Eagle: string[];
-  DeLorean: string[];
-  AMC: string[];
-  Hudson: string[];
-  Studebaker: string[];
-  Packard: string[];
-  Checker: string[];
-  Nash: string[];
-  Willys: string[];
-  International: string[];
-  Dodge: string[];
-  GMC: string[];
-  Ram: string[];
-  Acura: string[];
-  Scion: string[]; // Adding Scion to match the list you provided
-};
-
 export const CarModels = {
   Abarth: ["124 Spider", "595", "595C", "695"],
   AlfaRomeo: ["Giulia", "Giulietta", "Stelvio"],
@@ -322,3 +243,83 @@ export const CarModels = {
     "XC90",
   ],
 };
+
+
+// export type CarMake = {
+//   Toyota: string[],
+//   Ford: string[],
+//   BMW: string[],
+//   Peugeot: string[],
+//   Abarth: string[],
+//   Fiat: string[],
+//   MercedesBenz: string[],
+//   Audi: string[],
+//   Vauxhall: string[],
+//   Seat: string[],
+//   Volkswagen: string[],
+//   Mitsubishi: string[],
+//   Tesla: string[],
+//   Chevrolet: string[],
+//   Hyundai: string[],
+//   Kia: string[],
+//   Renault: string[],
+//   Nissan: string[],
+//   Volvo: string[],
+//   Skoda: string[],
+//   Honda: string[],
+//   Citroen: string[],
+//   Mazda: string[],
+//   Mini: string[],
+//   Jaguar: string[],
+//   LandRover: string[],
+//   Lexus: string[],
+//   Jeep: string[],
+//   Subaru: string[],
+//   Porsche: string[],
+//   DS: string[],
+//   Smart: string[],
+//   AlfaRomeo: string[],
+//   MG: string[],
+//   Suzuki: string[],
+//   Dacia: string[],
+//   Infiniti: string[],
+//   Bentley: string[],
+//   Ferrari: string[],
+//   Lamborghini: string[],
+//   McLaren: string[],
+//   Bugatti: string[],
+//   AstonMartin: string[],
+//   RollsRoyce: string[],
+//   Lotus: string[],
+//   Maserati: string[],
+//   Pagani: string[],
+//   Koenigsegg: string[],
+//   Genesis: string[],
+//   Rimac: string[],
+//   Chrysler: string[],
+//   Hummer: string[],
+//   Cadillac: string[],
+//   Buick: string[],
+//   Lincoln: string[],
+//   Pontiac: string[],
+//   Oldsmobile: string[],
+//   Saturn: string[],
+//   Saab: string[],
+//   Plymouth: string[],
+//   Mercury: string[],
+//   Eagle: string[],
+//   DeLorean: string[],
+//   AMC: string[],
+//   Hudson: string[],
+//   Studebaker: string[],
+//   Packard: string[],
+//   Checker: string[],
+//   Nash: string[],
+//   Willys: string[],
+//   International: string[],
+//   Dodge: string[],
+//   GMC: string[],
+//   Ram: string[],
+//   Acura: string[],
+//   Scion: string[], // Adding Scion to match the list you provided
+// };

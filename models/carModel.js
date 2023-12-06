@@ -1,24 +1,26 @@
-import { Document, Model, Schema, model } from "mongoose";
-import { ICar } from "../interfaces/car";
-import { CarModels, CarMake } from "../types/carTypes";
+const {
+  model,
+  Schema,
+  Types: { ObjectId },
+} = require("mongoose");
 
-const CarMakeEnumValues: (keyof CarMake)[] = Object.keys(
-  {} as CarMake
-) as (keyof CarMake)[];
+const CarMakeEnumValues = Object.keys(CarModels).reduce((acc, make) => {
+  acc[make] = make;
+  return acc;
+}, {});
 
-const validateModel = (value: string, make: keyof typeof CarModels) => {
-  const models = CarModels[make];
-  return models.includes(value);
-};
-
-const CarSchema: Schema = new Schema({
-  make: { type: String, required: true, enum: CarMakeEnumValues },
+const CarSchema = new Schema({
+  make: {
+    type: String,
+    required: true,
+    enum: Object.values(CarMakeEnumValues),
+  },
   model: {
     type: String,
     required: true,
     validate: {
-      validator: function (this: Document, value: string) {
-        const make = this.get("make") as keyof typeof CarModels;
+      validator: function (value) {
+        const make = this.get("make");
         return validateModel(value, make);
       },
       message: "Invalid model for the selected make.",
@@ -38,6 +40,6 @@ const CarSchema: Schema = new Schema({
   seats: { type: Number, required: true },
 });
 
-const Car = model("Car", CarSchema);
+const Car = model("Car", schema);
 
-export default Car;
+module.exports = Car;
