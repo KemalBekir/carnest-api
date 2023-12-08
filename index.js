@@ -30,7 +30,7 @@ async function start() {
   const app = express();
   app.use(express.json());
   app.use(cors());
-  app.use(catalogController);
+  app.use("/catalog", catalogController);
 
   app.get("/", (req, res) => {
     res.json({ message: "REST service operational" });

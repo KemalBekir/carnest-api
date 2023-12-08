@@ -4,6 +4,8 @@ const {
   Types: { ObjectId },
 } = require("mongoose");
 
+const CarModels = require("../types/carTypes");
+
 const CarMakeEnumValues = Object.keys(CarModels).reduce((acc, make) => {
   acc[make] = make;
   return acc;
@@ -35,11 +37,11 @@ const CarSchema = new Schema({
   bodyType: { type: String, required: true },
   gearbox: { type: String, required: true },
   engineSize: { type: String, required: true },
-  specification: [{ type: String }], // Array of strings for features
+  specification: [{ type: ObjectId, ref: "Specification" }], // Array of strings for features
   doors: { type: Number, required: true },
   seats: { type: Number, required: true },
 });
 
-const Car = model("Car", schema);
+const Car = model("Car", CarSchema);
 
 module.exports = Car;

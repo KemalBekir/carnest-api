@@ -1,4 +1,4 @@
-export const CarModels = {
+const CarModels = {
   Abarth: ["124 Spider", "595", "595C", "695"],
   AlfaRomeo: ["Giulia", "Giulietta", "Stelvio"],
   Audi: [
@@ -244,6 +244,9 @@ export const CarModels = {
   ],
 };
 
+module.exports = {
+  CarModels,
+};
 
 // export type CarMake = {
 //   Toyota: string[],
