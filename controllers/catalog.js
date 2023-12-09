@@ -4,7 +4,10 @@ const { isAuth, isOwner } = require("../middleware/guards");
 const api = require("../services/car");
 
 router.get("/", async (req, res) => {
-  const data = await api.getAll();
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  const data = await api.getAll(page, limit);
   res.json(data);
 });
 
