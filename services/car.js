@@ -13,6 +13,13 @@ async function getAll(page = 1, limit = 10) {
   }
 }
 
+async function getById(id) {
+  return Car.findById(id).populate({
+    path: "owner",
+    select: ["email", "username"],
+  });
+}
+
 async function searchCars(filters) {
   try {
     const query = {};
@@ -45,4 +52,5 @@ async function searchCars(filters) {
 module.exports = {
   getAll,
   searchCars,
+  getById,
 };

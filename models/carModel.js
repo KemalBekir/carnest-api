@@ -28,6 +28,7 @@ const CarSchema = new Schema({
       message: "Invalid model for the selected make.",
     },
   },
+  images: [{ type: ObjectId, ref: "Image" }],
   price: { type: Number, required: true },
   age: { type: Number, required: true },
   mileage: { type: Number, required: true },
@@ -40,6 +41,7 @@ const CarSchema = new Schema({
   specification: [{ type: ObjectId, ref: "Specification" }], // Array of strings for features
   doors: { type: Number, required: true },
   seats: { type: Number, required: true },
+  //TODO add owner
 });
 
 const Car = model("Car", CarSchema);
