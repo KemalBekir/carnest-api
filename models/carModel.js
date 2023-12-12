@@ -31,7 +31,16 @@ const CarSchema = new Schema(
       },
     },
     images: [{ type: ObjectId, ref: "Image" }],
-    price: { type: Number, required: true },
+    price: {
+      type: Number,
+      required: true,
+      validate: {
+        validator: function (value) {
+          return value >= 0;
+        },
+        message: "Price cannot be negative.",
+      },
+    },
     age: { type: Number, required: true },
     mileage: { type: Number, required: true },
     fuelType: { type: String, required: true },
