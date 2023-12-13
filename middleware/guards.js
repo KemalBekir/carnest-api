@@ -20,8 +20,11 @@ function isGuest() {
 
 function isOwner() {
   return (req, res, next) => {
-    //TODO - change res.locals
-    if (req.user && req.user._d == res.locals.item.owner._id) {
+    if (
+      req.user &&
+      req.user._id == res.locals.car.owner._id &&
+      req.user.role === "admin"
+    ) {
       next();
     } else {
       res.status(403).json({ message: "You cannot modify this record" });

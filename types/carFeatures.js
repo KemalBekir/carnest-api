@@ -1,5 +1,4 @@
 const carFeatures = [
-  ,
   "2 Zone Climate",
   "3 Zone Climate",
   "ACC Adaptive Cruise Control",
