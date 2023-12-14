@@ -68,9 +68,29 @@ function verifySession(token) {
   };
 }
 
+async function changePassword(userId, currentPassword, newPassword) {
+  const user = await User.findById(userId);
+  const isPasswordValid = await bcrypt.compare(
+    currentPassword,
+    user.hashedPassword
+  );
+
+  if (!isPasswordValid) {
+    return { error: "Current password is incorrect" };
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  user.hashedPassword = hashedPassword;
+  await user.save();
+
+  return { message: "Password changed successfully" };
+}
+
 module.exports = {
   login,
   register,
   logout,
   verifySession,
+  changePassword,
 };

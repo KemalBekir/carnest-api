@@ -18,6 +18,18 @@ function isGuest() {
   };
 }
 
+function isAdmin() {
+  return (req, res, next) => {
+    if (req.user.role === "admin") {
+      next();
+    } else {
+      res
+        .status(401)
+        .json({ message: "You are not authorized to create new record" });
+    }
+  };
+}
+
 function isOwner() {
   return (req, res, next) => {
     if (
