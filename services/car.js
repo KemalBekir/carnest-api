@@ -3,6 +3,10 @@ const Car = require("../models/carModel");
 async function getAll(page = 1, limit = 10) {
   try {
     const cars = await Car.find({})
+      .populate({
+        path: "images",
+        select: "url", // Only select the 'url' field from the 'Image' model
+      })
       .skip((page - 1) * limit)
       .limit(limit)
       .exec();
@@ -14,10 +18,15 @@ async function getAll(page = 1, limit = 10) {
 }
 
 async function getById(id) {
-  return Car.findById(id).populate({
-    path: "owner",
-    select: ["email", "username"],
-  });
+  return Car.findById(id)
+    .populate({
+      path: "owner",
+      select: ["email", "username"],
+    })
+    .populate({
+      path: "images",
+      select: "url",
+    });
 }
 
 async function searchCars(filters) {
