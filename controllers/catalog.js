@@ -13,13 +13,13 @@ router.get("/", async (req, res) => {
   res.json(data);
 });
 
+//TODO: add middleware depending on the requirements
 router.get("/features", async (req, res) => {
   const data = carFeatures;
   res.json(data);
 });
 
-/*TODO: add middleware for Authenticated and Role */
-router.post("/", async (req, res) => {
+router.post("/", isAuth(), isAdmin(), async (req, res) => {
   try {
     const imageDocs = req.body.images.map((imageUrl) => {
       return new Image({ url: imageUrl, altText: "Car Image" });
@@ -61,6 +61,17 @@ router.post("/", async (req, res) => {
 router.get("/:id", preload(), (req, res) => {
   const car = res.locals.car;
   res.json(car);
+});
+
+router.put("/:id", preload(), isOwner(), async (req, res) => {
+  try {
+    const updatedCars = api.updateMultiple(req.body);
+
+    res.status(200).json(updatedCars);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to update cars" });
+  }
 });
 
 module.exports = router;

@@ -58,8 +58,44 @@ async function searchCars(filters) {
   }
 }
 
+async function updateMultiple(cars) {
+  const updatedCars = [];
+
+  for (const car of cars) {
+    const existing = await Car.findById(car._id);
+
+    if (!existing) {
+      continue;
+    }
+    existing.make = car.make;
+    existing.model = car.model;
+    existing.images = car.images.map((img) => {
+      url: img.url;
+    });
+
+    existing.price = car.price;
+    existing.age = car.age;
+    existing.mileage = car.mileage;
+    existing.fuelType = car.fuelType;
+    existing.location = car.location;
+    existing.colour = car.colour;
+    existing.bodyType = car.bodyType;
+    existing.gearbox = car.gearbox;
+    existing.engineSize = car.engineSize;
+    existing.specification = car.specification;
+    existing.doors = car.doors;
+    existing.seats = car.seats;
+    existing.reserved = car.reserved;
+
+    const result = await existing.save();
+    updatedCars.push(result);
+  }
+  return updatedCars;
+}
+
 module.exports = {
   getAll,
   searchCars,
   getById,
+  updateMultiple,
 };
