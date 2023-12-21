@@ -1,12 +1,25 @@
 const router = require("express").Router();
-const { isGuest, isAuth, isOwner } = require("../middleware/guards");
+const { isGuest, isAuth, isOwner, isAdmin } = require("../middleware/guards");
 const {
   register,
   login,
   logout,
   changePassword,
+  getAllUsers,
 } = require("../services/users");
 const mapErrors = require("../utils/mappers");
+
+router.get("/", isAuth(), isAdmin(), async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  try {
+    const usersData = await getAllUsers(page, limit);
+    res.json(usersData);
+  } catch (error) {
+    res.status(500).json({ message: error.message || "Error fetching users" });
+  }
+});
 
 router.post("/register", isGuest(), async (req, res) => {
   try {

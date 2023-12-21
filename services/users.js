@@ -3,6 +3,27 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const blacklist = [];
 
+async function getAllUsers(page = 1, limit = 10) {
+  try {
+    const totalCount = await User.countDocuments();
+    const totalPages = Math.ceil(totalCount / limit);
+
+    const users = await User.find()
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .exec();
+
+    return {
+      users,
+      currentPage: page,
+      totalPages,
+      totalUsers: totalCount,
+    };
+  } catch (error) {
+    throw new Error("Error fetching users");
+  }
+}
+
 async function register(username, email, password) {
   const existing = await User.findOne({ email: new RegExp(`^${email}$`, "i") });
   if (existing) {
@@ -93,4 +114,5 @@ module.exports = {
   logout,
   verifySession,
   changePassword,
+  getAllUsers,
 };

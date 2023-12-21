@@ -48,4 +48,5 @@ module.exports = {
   isAuth,
   isGuest,
   isOwner,
+  isAdmin,
 };
