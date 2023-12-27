@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const mapErrors = require("../utils/mappers");
-const { isAuth, isOwner } = require("../middleware/guards");
+const { isAuth, isOwner, isAdmin } = require("../middleware/guards");
 const api = require("../services/car");
 const preload = require("../middleware/preload");
 const carFeatures = require("../types/carFeatures");

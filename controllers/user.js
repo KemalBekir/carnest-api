@@ -9,7 +9,8 @@ const {
 } = require("../services/users");
 const mapErrors = require("../utils/mappers");
 
-router.get("/", isAuth(), isAdmin(), async (req, res) => {
+//TODO: add middleware isAuth, isAdmin
+router.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
 
